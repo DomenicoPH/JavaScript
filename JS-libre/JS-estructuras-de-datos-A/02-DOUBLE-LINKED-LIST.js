@@ -17,9 +17,10 @@
 */
 
 class Node {
-    constructor(value, next = null) {
+    constructor(value, prev = null, next = null) {
         this.value = value;
         this.next = next;
+        this.prev = prev;
     }
 };
 
@@ -33,7 +34,7 @@ class LinkedList {
 
     //añadir +
     append(value) {
-        const newNode = new Node(value);
+        const newNode = new Node(value, this.tail);
         if(!this.head){
             this.head = newNode;
         } else {
@@ -51,3 +52,19 @@ class LinkedList {
         }
     }
 };
+
+//callback
+const printNode = (node) => console.log(node.value);
+
+//create linked list instance
+const list = new LinkedList();
+
+//añade elementos con el método 'append'
+list.append([1,'uno']);
+list.append([2,'dos']);
+list.append([3,'tres']);
+list.append([4,'cuatro']);
+list.append([5,'cinco']);
+
+//recorre el array con el método 'traverse' utilizando el callback 'printNode'
+list.traverse(printNode)
