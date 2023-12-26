@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciudades</title>
+</head>
+<body>
+    
+    Nombre: <input type="text" name="pais" id="pais">
+    <button id="show">Mostrar población</button>
+    <br>
+    <h1 id="population"></h1>
+
+
+    <script>
+
+        const paises = [
+            {
+                pais: 'India',
+                pop: 1428627666
+            },
+            {
+                pais: 'China',
+                pop: 1425671353
+            },
+            {
+                pais: 'Estados Unidos',
+                pop: 339996567
+            },
+            {
+                pais: 'Indonesia',
+                pop: 277534118
+            },
+            {
+                pais: 'Pakistán',
+                pop: 240485666
+            },
+            {
+                pais: 'Nigeria',
+                pop: 223804636
+            },
+            {
+                pais: 'Brasil',
+                pop: 216422450
+            },
+            {
+                pais: 'Bangladés',
+                pop: 172954325
+            },
+            {
+                pais: 'Rusia',
+                pop: 144444360
+            },
+            {
+                pais: 'México',
+                pop: 128455563
+            },
+            {
+                pais: 'Etiopía',
+                pop: 126527064
+            },
+            {
+                pais: 'Japón',
+                pop: 123294516
+            },
+            {
+                pais: 'Filipinas',
+                pop: 117337366
+            },
+            {
+                pais: 'Egipto',
+                pop: 112716599
+            },
+            {
+                pais: 'República Democrática del Congo',
+                pop: 102262812
+            },
+            {
+                pais: 'Vietnám',
+                pop: 98858947
+            },
+            {
+                pais: 'Irán',
+                pop: 89172768
+            },
+            {
+                pais: 'Turquía',
+                pop: 85816192
+            },
+            {
+                pais: 'Alemania',
+                pop: 83294634
+            },
+            {
+                pais: 'Tailandia',
+                pop: 71801281
+            },
+        ];
+
+        document.getElementById("show").addEventListener("click", function(){
+            const pais = document.getElementById("pais").value.toLowerCase()
+            const country = paises.find(function(country){
+                return country.pais.toLocaleLowerCase() === pais
+            });
+            if(country){
+                //alert(`La población de ${pais} es ${country.pop}`)
+                const populationElement = document.getElementById("population");
+                populationElement.textContent = `La población de ${pais} es ${country.pop}`;
+            } else {
+                //alert(`El país no está en la lista`)
+                const populationElement = document.getElementById("population");
+                populationElement.textContent = `El país no está en la lista`;
+            }
+        });
+
+    </script>
+
+</body>
+</html>
