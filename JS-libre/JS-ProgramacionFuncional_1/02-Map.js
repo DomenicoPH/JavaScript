@@ -1,3 +1,5 @@
+// https://youtube.com/playlist?list=PLSnadb41DsdKMddToNitoXrgHK7CEbUki&si=ysiR27rOrNbqZrjm
+
 // MAP
 const suma = (ns) => {
     let acumulado = 0
