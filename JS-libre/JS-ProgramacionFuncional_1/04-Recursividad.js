@@ -37,4 +37,4 @@ const llamarApi = async (url, llamados = 0) => {
     }
 }
 
-llamarApi('https://jsonplaceholder.typicode.com/users')
+llamarApi('https://jsonplaceholder.typicode.com/users');
