@@ -1,28 +1,35 @@
-// Usa el método de "filter" para extraer datos de un arreglo
+// Utiliza el método "reduce" para analizar datos
 
 /*
-    Otra función útil de los arreglos es Array.prototype.filter() 
-    o simplemente filter().
+    Array.prototype.reduce() o simplemente reduce() es la operación 
+    más común de todas para arreglos en JavaScript. 
+    
+    Se puede resolver casi cualquier problema de procesamiento de 
+    arreglos utilizando el método reduce.
 
-    filter Llama a una función sobre cada elemento del arreglo y 
-    devuelve un nuevo arreglo, conteniendo solo los elementos para 
-    los cuales la función devolvió un valor de verdadero - Es decir, 
-    un valor que devuelve true si paso al constructor Boolean(). 
-    En otras palabras, filtra el arreglo, basándose en la función 
-    que se le pasa. 
-    Al igual que map, hace esto sin necesidad de modificar el 
-    arreglo original.
+    El método reduce permite formas más generales de procesamiento 
+    de arreglos y es posible mostrar que tanto filter como map pueden 
+    derivarse como aplicaciones especiales de reduce. 
+    El método reduce itera sobre cada elemento del arreglo y devuelve 
+    un solo valor (por ejemplo una cadena, número, objeto, arreglo). 
+    Esto se consigue mediante una función callback que se llama en 
+    cada iteración.
 
-    La función callback acepta tres argumentos. El primer argumento 
-    es el elemento actual que se está procesando. El segundo es el 
-    índice de ese elemento y el tercero es el arreglo sobre el que 
-    se llamó al método filter.
+    La función callback acepta cuatro argumentos. 
+    El primer argumento se conoce como acumulador, que recibe el valor 
+    retornado de la función callback de la iteración anterior, el segundo 
+    es el elemento actual que se está procesando, el tercero es el índice 
+    de ese elemento y el cuarto es el arreglo sobre el que se llama a la 
+    función reduce.
 
-    A continuación se muestra un ejemplo en el que se utiliza el 
-    método filter en el arreglo users para devolver un nuevo 
-    arreglo que contiene sólo a los usuarios menores de 30 años. 
-    Para que sea más fácil, el ejemplo solo utiliza el primer 
-    argumento de la función callback.
+    Además de la función callback, reduce tiene un parámetro adicional que 
+    toma un valor inicial para el acumulador. Si este segundo parámetro no 
+    se utiliza, entonces la primera iteración se omite y la segunda se pasa 
+    por el primer elemento del arreglo como acumulador.
+
+    Mira a continuación un ejemplo con reduce en el arreglo users para 
+    devolver la suma de todas las edades de los usuarios. Para hacerlo 
+    más fácil, el ejemplo sólo utiliza el primer y segundo argumento.
 */
 
 const users = [
@@ -31,25 +38,40 @@ const users = [
   { name: 'camperCat', age: 10 }
 ];
 
-const usersUnder30 = users.filter(user => user.age < 30);
-console.log(usersUnder30);
+const sumOfAges = users.reduce((sum, user) => sum + user.age, 0);
+console.log(sumOfAges);
+
+/*
+    En otro ejemplo, se puede observar cómo un objeto puede ser 
+    devuelto con los nombres de los usuarios como propiedades 
+    con las edades como valores.
+*/
+  
+const usersObj = users.reduce((obj, user) => {
+  obj[user.name] = user.age;
+  return obj;
+}, {});
+
+console.log(usersObj);
 
 /*
     La variable watchList contiene un arreglo de objetos con 
-    información sobre varias películas. 
-    Utiliza una combinación de filter y map en watchList para 
-    asignar un nuevo arreglo de objetos con solo title y 
-    rating claves. 
-    El nuevo arreglo solo debe incluir objetos donde imdbRating 
-    es mayor o igual a 8.0. Ten en cuenta que los valores rating 
-    se guardan como cadenas en el objeto y puedes necesitar 
-    convertirlos en números para realizar operaciones 
-    matemáticas en ellos.
+    información sobre varias películas. Utiliza reduce para 
+    encontrar la calificación media en IMDB de las películas 
+    dirigidas por Christopher Nolan. 
+    Recuerda de desafíos anteriores filtrar (filter) los datos 
+    y mapear (map) sobre ellos para extraer lo que necesitas. 
+    Puede que necesites crear otras variables y devolver la 
+    calificación media con la función getRating. 
+    Ten en cuenta que los valores de calificación se guardan 
+    como cadenas en el objeto y necesitan ser convertidos en 
+    números antes de ser utilizados en cualquier operación 
+    matemática.
 */
 
 /* --------------------------------------------------------------------------------- */
 
-// 'watchList' La variable global
+// La variable global
 const watchList = [
   {
     "Title": "Inception",
@@ -163,30 +185,18 @@ const watchList = [
   }
 ];
 
-// Cambia solo el código debajo de esta línea
+function getRating(watchList) {
+  // Cambia solo el código debajo de esta línea
+  let ratings = watchList                                                   // 'ratings' equivale a watchlist pasada por .filter y .map
+  .filter((movie) => movie.Director === 'Christopher Nolan')                // filtramos para obtener únicamente las películas dirigidas por 'Christopher Nolan' 
+  .map((movie) => Number(movie.imdbRating))                                 // mapeamos para obtener únicamente el rating de cada película
+  if(ratings.length === 0){                                                 // Si ratinigs no tienen nada retornamos cero
+    return 0
+  }
+  let sum = ratings.reduce((acc,rating) => acc + rating, 0)                 // 'sum' equivale a la suma de todos los ratings (usando reduce)
+  let averageRating = sum / ratings.length                                  // 'averageRating' equivale a 'sum' dividido entre el número de elementos dentro del array 'ratings'
+  // Cambia solo el código encima de esta línea
+  return averageRating;
+}
 
-const filteredList = watchList
-.filter((movie) => movie.imdbRating >= 8)
-.map((movie) => ({
-  title: movie["Title"],
-  rating: movie['imdbRating']
-}))
-
-// Cambia solo el código encima de esta línea
-
-console.log('watchList: simplificada')  // ( todas las películas )
-console.log(watchList.map((movie) => ({title: movie["Title"],rating: movie['imdbRating']})));
-
-console.log('watchList: filtrada: Rating mayor que 8')  // ( rating >= 8 )
-console.log(filteredList)
-
-// EXTRA
-const ratingOver9 = watchList
-.filter((movie) => movie.imdbRating >= 9)
-.map((movie) => ({
-  title: movie["Title"],
-  rating: movie['imdbRating']
-}))
-
-console.log('watchList: filtrada: Rating mayor que 9')  // ( rating >= 9 )
-console.log(ratingOver9)
+console.log(getRating(watchList));

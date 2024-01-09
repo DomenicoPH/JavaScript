@@ -1,0 +1,70 @@
+body{
+    background-color: black;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+h1{
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+h2{
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aqua;
+    border: blue 1px solid;
+    border-radius: 5px;
+    max-height: 10px;
+    padding: 10px;
+
+    
+}
+
+.precontent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(27, 27, 27);
+    border-radius: 5px;
+    border: blue 1px solid;
+    padding: 10px;
+}
+.content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: rgb(27, 27, 27);
+    border-radius: 5px;
+    border: blue 1px solid;
+    padding: 10px;
+}
+.content div{
+    display: flex;
+}
+
+.content div{
+    border: black 3px solid;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: white;
+    text-align: center;
+}
+.content div div{
+    margin: 1px;
+}
+
+.content:hover {
+    background-color: orange;
+}
+.content div:hover{
+    background-color: orangered;
+}
+.content div div:hover{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
