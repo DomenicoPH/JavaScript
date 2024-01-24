@@ -26,8 +26,8 @@ function whatIsInAName(collection, source) {            // Recibe dos argumentos
   return collection.filter(obj => {                     // Utilizando el método filter para crear un nuevo array basado en la condición dada
     for(let key in source){                             // Iterando sobre las claves del objeto source
       if(obj[key] !== source[key]){                     // Comparando los valores de las claves correspondientes en el objeto de la colección y el objeto source
+        return false                                    // Si los valores no coinciden, el objeto no cumple con los criterios y se descarta (X)
       }
-      return false                                      // Si los valores no coinciden, el objeto no cumple con los criterios y se descarta (X)
     }
     return true                                         // Si se recorren todas las claves sin encontrar discrepancias, el objeto cumple con los criterios y se incluye en el nuevo array
   })

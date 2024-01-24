@@ -11,20 +11,20 @@
 */
 
 function destroyer(arr) {
-  const toRemove = Object.values(arguments).slice(1)
-  const myArr = []
-  for(let i=0; i < arr.length; i++){
-    let removeElement = false
-    for(let j = 0; j < toRemove.length; j++){
-      if(arr[i] === toRemove[j]){
-        removeElement = true
+  const toRemove = Object.values(arguments).slice(1)      // Almacena los valores a eliminar a partir del segundo argumento en un array llamado toRemove
+  const myArr = []                                        // Crea un nuevo array llamado myArr para almacenar los elementos filtrados
+  for(let i=0; i < arr.length; i++){                      // Itera sobre cada elemento del array original arr
+    let removeElement = false                             // Inicializa una variable removeElement en false para rastrear si se debe eliminar el elemento actual
+    for(let j = 0; j < toRemove.length; j++){             // Itera sobre los valores a eliminar almacenados en el array toRemove
+      if(arr[i] === toRemove[j]){                         // Compara el elemento actual de arr con el valor a eliminar
+        removeElement = true                              // Si hay una coincidencia, establece removeElement en true
       }
     }
-    if(!removeElement){
+    if(!removeElement){                                   // Si removeElement es false, agrega el elemento actual al nuevo array myArr
       myArr.push(arr[i])
     }
   }
-  return myArr;
+  return myArr;                                           // Devuelve el nuevo array myArr que contiene los elementos filtrados
 }
 
 console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3))
