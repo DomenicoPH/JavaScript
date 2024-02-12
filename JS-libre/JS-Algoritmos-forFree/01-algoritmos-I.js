@@ -284,3 +284,44 @@ function sss(arr){
     return arr
 }
 console.log(sss([4,3,5,2,1]))
+
+
+// Quick Sort:
+function quickSort(arr){
+    if(arr.length <= 1) return arr
+    let pivot = arr[0]
+    let left = []
+    let right = []
+    for(let i=1; i < arr.length; i++){
+        if(arr[i] <= pivot) left.push(arr[i])
+        if(arr[i] > pivot) right.push(arr[i])
+    }
+    return quickSort(left).concat(pivot,quickSort(right))
+}
+console.log(quickSort([4,7,2,5,1,8,3,6]))
+
+
+// Merge Sort
+function mergeSort(arr){
+    if(arr.length <= 1) return arr
+    let half = Math.floor(arr.length / 2)
+    let left = arr.slice(0,half)
+    let right = arr.slice(half)
+    return merge(mergeSort(left),mergeSort(right))
+}
+function merge(arr1,arr2){
+    let i = 0
+    let j = 0
+    let ordenados = []
+    while(i < arr1.length && j < arr2.length){
+        if(arr1[i] < arr2[j]){
+            ordenados.push(arr1[i])
+            i++
+        } else {
+            ordenados.push(arr2[j])
+            j++
+        }
+    }
+    return ordenados.concat(arr1.slice(i),arr2.slice(j))
+}
+console.log(mergeSort([4,7,2,5,1,8,3,6]))
