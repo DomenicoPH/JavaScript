@@ -1,34 +1,37 @@
-/* const wrapper = document.body.childNodes[1]
-console.log(wrapper.childNodes)
+const wrapper = document.querySelector('#wrapper')
+const title = document.querySelector('.title')
+const link = document.querySelector('.link.bold')
+const inputNumber = document.querySelector('[type="number"]')
 
-const comment = document.body.childNodes[3]
-console.log(comment)
 
-const commentData = document.body.childNodes[3].data
-console.log(commentData)
+// getAttribute
 
-const docuFirstChild = document.body.firstChild
-console.log(docuFirstChild)
+console.dir(title)
+console.dir(inputNumber)
 
-const docuFirstElementChild = document.body.firstElementChild
-console.log(docuFirstElementChild)
+console.dir(title.getAttribute('href'))
+console.dir(link.getAttribute('href'))
+console.dir(inputNumber.getAttribute('name'))
+console.dir(inputNumber.getAttribute('type'))
+console.dir(inputNumber.getAttribute('id'))
+console.dir(wrapper.getAttribute('class'))
+console.dir(wrapper.getAttribute('id'))
+console.dir(link.getAttribute('class'))
 
-const docuLastChild = document.body.lastChild
-console.log(docuLastChild)
+// setAttribute
 
-const docuLastElementChild = document.body.lastElementChild
-console.log(docuLastElementChild)
+console.log('-- class -- pepito --')
+//console.log(title.className)
+//console.log(title.className = 'pepito')
+//console.log(title.className)
+console.dir(title.className)
+title.setAttribute('class','pepito')
+console.dir(title.className)
 
-const ultimoHijo = document.body.children[0]
-console.log(ultimoHijo.lastChild)
-
-const ultimoElementoHijo = document.body.children[0]
-console.log(ultimoElementoHijo.lastElementChild)
-
-const tieneHijos = document.body.hasChildNodes()
-console.log(tieneHijos) */
-
-const wrapper = document.body.children[0];
-const div = wrapper.children[1];
-
-console.log(div.nextSibling)
+console.log('-- id -- encabezado --')
+//console.log(title.id)
+//console.dir(title.id = 'encabezado')
+//console.log(title.id)
+console.dir(title.id)
+title.setAttribute('id','encabezado')
+console.dir(title.id)
