@@ -398,5 +398,46 @@ La propiedad dataset devuelve un objeto DOMStringMap que contiene todos los atri
 <font size='6'>2. Eventos</font>
 ---
 
+<font size='5'>Event Bubbling</font>  
+<font size='3'>
+El "event bubbling" (o burbujeo de eventos) es un concepto en la programación de eventos en navegadores web. En un modelo de eventos de tipo "bubbling", cuando un evento ocurre en un elemento DOM (Document Object Model), como hacer clic en un botón, el evento se propaga desde ese elemento hacia arriba en la jerarquía del DOM, activando los controladores de eventos asociados en cada uno de los elementos en el camino.
 
+Por ejemplo, si tienes una estructura de HTML donde un elemento A está dentro de otro elemento B, y haces clic en el elemento A, el evento de clic primero se activará en el elemento A y luego se propagará hacia arriba, activando los controladores de eventos asociados en el elemento A y luego en el elemento B si también tiene un controlador de eventos para ese evento específico.
+
+El event bubbling es importante en la manipulación de eventos en JavaScript, ya que permite gestionar eventos de manera eficiente en elementos dentro de estructuras complejas de HTML, sin tener que asignar un controlador de eventos a cada elemento individualmente. Sin embargo, también puede causar problemas si no se maneja adecuadamente, ya que los eventos pueden propagarse a elementos no deseados y activar inadvertidamente acciones no deseadas. En tales casos, se puede utilizar el método event.stopPropagation() para detener la propagación del evento en la fase de burbujeo.
+
+</font>  
+
+---
+
+<font size='5'>stopPropagation() & stopImmediatePropagation()</font>  
+<font size='3'>
+stopPropagation() y stopImmediatePropagation() son métodos utilizados en la gestión de eventos en JavaScript para controlar la propagación de eventos en el DOM (Document Object Model).
+
+stopPropagation() se utiliza para detener la propagación del evento hacia arriba en la jerarquía del DOM, mientras que stopImmediatePropagation() detiene la propagación del evento y evita que otros controladores de eventos asociados al mismo elemento se ejecuten.
+</font>  
+
+<font size='5'>stopPropagation()</font>  
+<font size='3'>
+Este método se utiliza para detener la propagación de un evento en el modelo de eventos de burbujeo. Cuando se llama a stopPropagation() en un evento, se detiene la propagación del evento adicionalmente a los elementos superiores en la jerarquía del DOM. Es decir, el evento ya no se propagará hacia arriba en la jerarquía del DOM. Sin embargo, el controlador de eventos asociado al elemento actual todavía se ejecutará. Este método es útil cuando deseas detener que el evento se propague a elementos superiores en el DOM, pero aún deseas que el controlador de eventos asociado al elemento actual se ejecute.  
+
+                elemento.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    // El evento no se propagará más arriba en la jerarquía del DOM
+                    // Otros controladores de eventos click en elementos superiores no se activarán
+                });
+
+</font>  
+
+<font size='5'>stopImmediatePropagation()</font>  
+<font size='3'>
+Este método funciona de manera similar a stopPropagation(), detiene la propagación del evento, pero además, evita que otros controladores de eventos asociados al mismo elemento se ejecuten. Esto significa que no solo detiene la propagación del evento hacia arriba en la jerarquía del DOM, sino que también detiene la ejecución de otros controladores de eventos para el mismo evento en el mismo elemento. Es útil cuando deseas detener la propagación del evento y evitar que otros controladores de eventos asociados al mismo elemento se ejecuten.  
+
+                elemento.addEventListener('click', function(event) {
+                    event.stopImmediatePropagation();
+                    // El evento no se propagará más arriba en la jerarquía del DOM
+                    // Otros controladores de eventos click en este mismo elemento no se activarán
+                });
+
+</font>  
 
