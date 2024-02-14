@@ -8,7 +8,7 @@ const link3 = links[2]
 const link4 = links[3]
 
 //console.log(wrapper); console.log(title); console.log(links); console.log(link1); console.log(link2); console.log(link3); console.log(link4)
-
+wrapper.setAttribute('style', 'display:flex; flex-direction:column; align-items:center')
 for(let i=0; i < links.length; i++){
     console.log(links[i])
     links[i].setAttribute('style','min-width:200px; display:flex; justify-content:center')
@@ -26,6 +26,7 @@ link1.addEventListener('click',() => {
         links[i].style.backgroundColor = 'yellow'
         links[i].style.color = 'black'
     }
+    title.textContent = 'DOM (Document Object Model) - Modo oscuro'
 })
 
 link2.addEventListener('click',() => {
@@ -35,6 +36,7 @@ link2.addEventListener('click',() => {
         links[i].style.backgroundColor = 'gray'
         links[i].style.color = 'black'
     }
+    title.textContent = 'DOM (Document Object Model) - Modo gris'
 })
 
 link3.addEventListener('click',() => {
@@ -48,4 +50,15 @@ link3.addEventListener('click',() => {
         links[2].style.color = 'orange'
         links[3].style.backgroundColor = 'rebeccapurple'
         links[3].style.color = 'white'
+        title.textContent = 'DOM (Document Object Model) - Full-Color-Mode'
+})
+
+link4.addEventListener('click',() => {
+    document.documentElement.style.backgroundColor = 'white'
+    document.documentElement.style.color = 'rebeccapurple'
+        for(let i=0; i < links.length; i++){
+            links[i].style.backgroundColor = 'rebeccapurple'
+            links[i].style.color = 'white'
+        }
+        title.textContent = 'DOM (Document Object Model)'
 })
