@@ -441,3 +441,23 @@ Este método funciona de manera similar a stopPropagation(), detiene la propagac
 
 </font>  
 
+---
+
+<font size='5'>Fase de captura</font>  
+<font size='3'>
+La fase de captura es una de las fases del modelo de eventos en JavaScript que ocurre antes de que se desencadene el evento real en el objetivo o target del evento. En el modelo de eventos del DOM, los eventos pasan por tres fases distintas: captura, objetivo y burbujeo.
+
+Durante la fase de captura, el evento se propaga desde el nodo raíz del árbol DOM hacia abajo hasta alcanzar el objetivo del evento. En esta fase, los controladores de eventos asociados a los ancestros del objetivo tienen la oportunidad de capturar y procesar el evento antes de que llegue al objetivo real del evento. Es importante destacar que no todos los eventos pasan por la fase de captura; por ejemplo, los eventos de clic (click) generalmente no lo hacen.
+
+Para agregar un controlador de eventos durante la fase de captura, se puede utilizar el método addEventListener() con un tercer argumento opcional true. Por defecto, este tercer argumento es false, lo que significa que el controlador de eventos se agregará durante la fase de burbujeo. Sin embargo, si se establece en true, el controlador de eventos se agregará durante la fase de captura.  
+
+        // Agrega un controlador de eventos durante la fase de captura
+        elemento.addEventListener('click', function(event) {
+            // Este controlador de eventos se activará durante la fase de captura
+        }, true);
+
+La fase de captura en el modelo de eventos del DOM es la fase inicial durante la cual el evento se propaga desde el nodo raíz hacia abajo en el árbol DOM hasta alcanzar el objetivo del evento. Durante esta fase, los ancestros del objetivo tienen la oportunidad de capturar y procesar el evento antes de que llegue al objetivo real del evento.
+
+</font>  
+
+---
