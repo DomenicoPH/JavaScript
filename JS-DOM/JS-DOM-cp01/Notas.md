@@ -513,7 +513,7 @@ En resumen, la delegación de eventos es una técnica poderosa en JavaScript par
 </font>  
 
 ---
-<font size='6'>3. Manejo de Clases</font>
+<font size='6'>3. Clases</font>
 ---
 <font size='6'>ClassList (métodos)</font>  
 
@@ -604,3 +604,26 @@ El método classList.replace() se utiliza para reemplazar una clase existente en
                 const elemento = document.getElementById('miElemento');
                 elemento.classList.replace('class1', 'newClass');
 </font> 
+
+---
+<font size='6'>4. CSSOM</font>  
+
+<font size='3'>
+CSSOM (Cascading Style Sheets Object Model) es una interfaz en el entorno del navegador que permite a los desarrolladores acceder y manipular las hojas de estilo CSS de un documento HTML utilizando JavaScript. Es una API que proporciona una representación estructurada de las reglas CSS aplicadas a un documento y permite realizar operaciones como leer, modificar o eliminar estilos de manera programática.
+
+Al igual que el DOM (Document Object Model) para HTML, que representa la estructura del documento HTML como un árbol de nodos, el CSSOM representa las reglas de estilo CSS como un conjunto de objetos que pueden ser accedidos y manipulados mediante JavaScript.
+
+Algunas de las operaciones comunes que se pueden realizar con CSSOM incluyen:
+
+- Acceder a las reglas de estilo CSS aplicadas a un elemento.
+- Modificar los estilos de un elemento específico.
+- Añadir o eliminar reglas de estilo en una hoja de estilo CSS.
+- Obtener información sobre las propiedades y valores de los estilos aplicados.
+
+Esto es especialmente útil en aplicaciones web dinámicas donde los estilos deben cambiarse o ajustarse en respuesta a acciones del usuario o cambios en el estado de la aplicación.
+
+La manipulación de CSSOM es una técnica poderosa que complementa la manipulación del DOM y proporciona a los desarrolladores un mayor control sobre la presentación visual de sus aplicaciones web utilizando JavaScript.  
+
+</font> 
+
+---
