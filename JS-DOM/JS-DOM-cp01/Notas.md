@@ -461,3 +461,146 @@ La fase de captura en el modelo de eventos del DOM es la fase inicial durante la
 </font>  
 
 ---
+
+<font size='5'>matches()</font>  
+<font size='3'>
+El método .matches() es una función que se utiliza en JavaScript para comprobar si un elemento coincide con un selector CSS especificado. Este método devuelve un valor booleano (true o false) dependiendo de si el elemento cumple con las condiciones establecidas por el selector CSS.  
+
+                const divElement = document.querySelector('div');
+                const matchesSelector = divElement.matches('.clase1.clase2'); // Verifica si el div tiene ambas clases 'clase1' y 'clase2'
+
+.matches() es útil cuando necesitas comprobar si un elemento específico cumple con ciertos criterios de estilo o selección antes de realizar ciertas operaciones o aplicar ciertos estilos a ese elemento en tu código JavaScript.
+</font> 
+
+<font size='5'>closest()</font>  
+<font size='3'>
+El método .closest() es un método en JavaScript que se utiliza para encontrar el ancestro más cercano (padre o ancestro padre) que coincida con un selector CSS especificado. Este método es útil cuando necesitas encontrar un elemento específico dentro de la jerarquía del DOM a partir de otro elemento de referencia.  
+
+                //Sintaxis básica
+                elemento.closest(selector)
+
+                <div id="padre">
+                    <div class="hijo">
+                        <div class="nieto"></div>
+                    </div>
+                </div>
+
+                const nietoElemento = document.querySelector('.nieto');
+                const padreElemento = nietoElemento.closest('#padre');
+
+En este caso, .closest('#padre') buscará el ancestro más cercano del elemento .nieto que tenga el id #padre. Como resultado, padreElemento contendrá una referencia al elemento &lt;div id="padre"&gt;.
+
+El método .closest() es particularmente útil cuando necesitas navegar hacia arriba en la jerarquía del DOM para encontrar un elemento específico a partir de otro elemento de referencia, sin tener que preocuparte por cuántos niveles de ancestros hay entre ellos.
+</font> 
+
+---
+
+<font size='5'>Event Delegation</font>  
+<font size='3'>
+La delegación de eventos (Event Delegation) es un concepto en JavaScript que implica asociar un controlador de eventos a un ancestro común de varios elementos en lugar de asignar un controlador de eventos a cada elemento individualmente. Este patrón se utiliza principalmente para optimizar el rendimiento y simplificar el manejo de eventos en aplicaciones web con elementos dinámicos o un gran número de elementos.
+
+En lugar de asignar un controlador de eventos a cada elemento, la delegación de eventos aprovecha el mecanismo de propagación de eventos en el DOM. Cuando ocurre un evento en un elemento hijo, como un clic en un botón, el evento se propaga desde el elemento hijo hasta el ancestro más cercano, que es el ancestro común de todos los elementos. Luego, el evento atraviesa la fase de burbujeo del modelo de eventos del DOM. Durante esta propagación, se puede capturar el evento en el ancestro común y determinar qué elemento hijo desencadenó el evento originalmente.
+
+Al utilizar la delegación de eventos, puedes asignar un solo controlador de eventos al ancestro común y luego verificar el objetivo del evento dentro de ese controlador de eventos. Esto significa que no necesitas asignar controladores de eventos a cada elemento hijo individual, lo que puede resultar en un código más limpio y eficiente, especialmente en aplicaciones con una gran cantidad de elementos o elementos dinámicos que pueden agregarse o eliminarse en el DOM.
+
+La delegación de eventos es particularmente útil en situaciones como:
+
+- Listas o tablas dinámicas donde los elementos se agregan o eliminan dinámicamente.  
+- Menús desplegables o sistemas de navegación donde los elementos pueden tener diferentes comportamientos según su estado.  
+- Aplicaciones con un gran número de elementos que pueden desencadenar el mismo tipo de evento, como clics o cambios de estado.  
+
+En resumen, la delegación de eventos es una técnica poderosa en JavaScript para manejar eventos de manera eficiente, asociando un solo controlador de eventos a un ancestro común en lugar de a cada elemento individual. Esto puede mejorar significativamente el rendimiento y la claridad del código en aplicaciones web.
+</font>  
+
+---
+<font size='6'>3. Manejo de Clases</font>
+---
+<font size='6'>ClassList (métodos)</font>  
+
+<font size='5'>item()</font>  
+<font size='3'>
+El método .item() de la interfaz DOMTokenList, que es la interfaz a la que pertenece la propiedad classList de los elementos del DOM, se utiliza para obtener un elemento específico de la lista de clases de un elemento.
+
+La DOMTokenList representa una lista de tokens, donde cada token corresponde a una clase CSS del elemento. El método .item() permite acceder a un elemento específico de esta lista utilizando su índice como parámetro.
+
+Es importante tener en cuenta que los índices de la lista de clases comienzan desde cero, al igual que en los arrays. Si el índice pasado como argumento es mayor o igual al número de clases en la lista, el método .item() devuelve null.  
+
+                <div class="clase1 clase2 clase3"></div>
+
+                const divElement = document.querySelector('div');
+
+                const primeraClase = divElement.classList.item(0); // Retorna "clase1"
+
+                const segundaClase = divElement.classList.item(1); // Retorna "clase2"
+
+                const terceraClase = divElement.classList.item(2); // Retorna "clase3"
+
+                const claseInexistente = divElement.classList.item(3); // Retorna null
+
+</font> 
+
+<font size='5'>add()</font>  
+<font size='3'>
+El método .add() pertenece a la interfaz DOMTokenList, que es la interfaz a la que pertenece la propiedad classList de los elementos del DOM. Este método se utiliza para agregar una o más clases CSS a la lista de clases de un elemento.
+
+El método .add() es útil cuando necesitas agregar clases dinámicamente a elementos del DOM en respuesta a eventos o acciones del usuario, lo que te permite modificar la apariencia o el comportamiento de los elementos según sea necesario en tu aplicación web.  
+
+                <div id="miElemento" class="ejemplo"></div>
+
+                const elemento = document.getElementById('miElemento');
+                elemento.classList.add('nueva-clase');
+
+                <div id="miElemento" class="ejemplo nueva-clase"></div>
+</font> 
+
+<font size='5'>remove()</font>  
+<font size='3'>
+El método .remove() es otro método de la interfaz DOMTokenList, que es la interfaz a la que pertenece la propiedad classList de los elementos del DOM. Este método se utiliza para eliminar una o más clases CSS de la lista de clases de un elemento.
+
+El método .remove() es útil cuando necesitas modificar dinámicamente las clases de los elementos del DOM en respuesta a eventos o acciones del usuario, permitiéndote actualizar la apariencia o el comportamiento de los elementos según sea necesario en tu aplicación web.  
+
+                <div id="miElemento" class="clase1 clase2 clase3"></div>
+
+                const elemento = document.getElementById('miElemento');
+                elemento.classList.remove('clase2');
+
+                <div id="miElemento" class="clase1 clase3"></div>
+</font> 
+
+<font size='5'>toggle()</font>  
+<font size='3'>
+El método .toggle() es parte de la interfaz DOMTokenList, que es la interfaz a la que pertenece la propiedad classList de los elementos del DOM. Este método se utiliza para alternar la presencia de una clase CSS en la lista de clases de un elemento. Es decir, si la clase está presente en el elemento, .toggle() la elimina; si la clase no está presente, .toggle() la agrega.
+
+Por ejemplo, supongamos que tienes un botón en tu HTML que muestra y oculta un elemento &lt;div&gt; al hacer clic. Inicialmente, el elemento &lt;div&gt; está oculto y tiene una clase CSS llamada "oculto". Al hacer clic en el botón, deseas alternar la clase "oculto" en el elemento &lt;div&gt; para mostrarlo o ocultarlo.  
+
+                <button id="botonMostrarOcultar">Mostrar/Ocultar</button>
+                <div id="miElemento" class="oculto">Contenido oculto</div>
+
+                const botonMostrarOcultar = document.getElementById('botonMostrarOcultar');
+                const miElemento = document.getElementById('miElemento');
+
+                botonMostrarOcultar.addEventListener('click', function() {
+                  miElemento.classList.toggle('oculto');
+                });
+</font> 
+
+<font size='5'>contains()</font>  
+<font size='3'>
+El método .contains() es parte de la interfaz DOMTokenList, la cual representa una lista de tokens, como las clases CSS de un elemento del DOM. Este método se utiliza para verificar si un elemento tiene una clase CSS específica en su lista de clases.  
+
+El método .contains() es útil cuando necesitas realizar acciones basadas en si un elemento tiene o no una clase específica. Puedes usar esta información para modificar dinámicamente el comportamiento o la apariencia de los elementos en tu aplicación web.  
+
+                <div id="miElemento" class="clase1 clase2"></div>
+
+                const miElemento = document.getElementById('miElemento');
+                const tieneClase1 = miElemento.classList.contains('clase1');
+                console.log(tieneClase1); // Esto imprimirá true 
+</font> 
+
+<font size='5'>replace()</font>  
+<font size='3'>
+El método classList.replace() se utiliza para reemplazar una clase existente en la lista de clases de un elemento del DOM por una nueva clase. Este método es útil cuando necesitas cambiar dinámicamente una clase específica en un elemento del DOM sin necesidad de eliminarla y agregarla por separado.  
+
+                const elemento = document.getElementById('miElemento');
+                elemento.classList.replace('class1', 'newClass');
+</font> 
