@@ -627,3 +627,89 @@ La manipulación de CSSOM es una técnica poderosa que complementa la manipulaci
 </font> 
 
 ---
+
+<font size='5'>setProperty()</font>  
+<font size='3'>
+setProperty es un método que se utiliza en JavaScript para establecer o modificar el valor de una propiedad CSS en un objeto de estilo (objeto CSSStyleDeclaration). Este método pertenece a la interfaz CSSStyleDeclaration, que representa los estilos CSS de un elemento del DOM.
+
+                elemento.style.setProperty(nombrePropiedad, valor, prioridad);
+
+- elemento es el elemento del DOM al que deseas aplicar estilos.
+- nombrePropiedad es el nombre de la propiedad CSS que deseas establecer o modificar, como "color", "font-size", etc.
+- valor es el valor que deseas asignar a la propiedad especificada.
+- prioridad es una cadena opcional que indica la prioridad de la regla de estilo, como "important".  
+---
+
+                const miElemento = document.getElementById('miElemento');
+                miElemento.style.setProperty('color', 'red');
+
+En este caso, estamos utilizando setProperty para establecer la propiedad CSS "color" del elemento miElemento en "red". También es posible especificar una prioridad utilizando el tercer parámetro prioridad, si es necesario. Por ejemplo:
+
+                miElemento.style.setProperty('color', 'red', 'important');
+
+Esto establecerá la propiedad "color" con el valor "red" y la prioridad "important".
+
+</font> 
+
+<font size='5'>removeProperty()</font>  
+<font size='3'>
+removeProperty es un método que se utiliza en JavaScript para eliminar una propiedad CSS específica de un objeto de estilo (objeto CSSStyleDeclaration). Este método pertenece a la interfaz CSSStyleDeclaration, que representa los estilos CSS de un elemento del DOM.  
+
+                elemento.style.removeProperty(nombrePropiedad);  
+
+- elemento es el elemento del DOM del cual deseas eliminar la propiedad CSS.  
+- nombrePropiedad es el nombre de la propiedad CSS que deseas eliminar, como "color", "font-size", etc.  
+---
+
+                <div id="miElemento" style="background-color: blue;">Contenido del elemento</div>
+
+                const miElemento = document.getElementById('miElemento');
+                miElemento.style.removeProperty('background-color');  
+
+El método removeProperty es útil cuando necesitas eliminar dinámicamente propiedades CSS específicas de un elemento del DOM en respuesta a eventos o cambios en el estado de la aplicación. Esto te permite manipular la apariencia de los elementos de manera flexible y dinámica mediante JavaScript.
+
+</font> 
+
+<font size='5'>getPropertyValue()</font>  
+<font size='3'>
+El método getPropertyValue() es un método de la interfaz CSSStyleDeclaration, la cual representa los estilos CSS de un elemento del DOM. Este método se utiliza para obtener el valor actual de una propiedad CSS específica aplicada a un elemento.  
+
+                valor = elemento.style.getPropertyValue(nombrePropiedad);
+
+- elemento es el elemento del DOM del cual deseas obtener el valor de la propiedad CSS.
+- nombrePropiedad es el nombre de la propiedad CSS de la cual deseas obtener el valor, como "color", "font-size", etc.
+- valor es el valor de la propiedad CSS especificada.  
+---
+
+                <div id="miElemento" style="background-color: blue;">Contenido del elemento</div>
+
+                const miElemento = document.getElementById('miElemento');
+                const colorFondo = miElemento.style.getPropertyValue('background-color');
+                console.log(colorFondo); // Esto imprimirá "blue"
+
+El método getPropertyValue() devuelve una cadena que representa el valor de la propiedad CSS especificada. En este caso, colorFondo contendría el valor "blue", que es el color de fondo actual del elemento <div> según se define en CSS.
+
+Este método es útil cuando necesitas acceder al valor de una propiedad CSS específica de un elemento del DOM para realizar operaciones basadas en ese valor, como modificar dinámicamente la apariencia o el comportamiento de los elementos en tu aplicación web.
+</font> 
+
+<font size='5'>getPropertyPriority()</font>  
+<font size='3'>
+El método getPropertyPriority() es un método de la interfaz CSSStyleDeclaration, la cual representa los estilos CSS de un elemento del DOM. Este método se utiliza para obtener la prioridad de una propiedad CSS específica aplicada a un elemento.  
+
+                prioridad = elemento.style.getPropertyPriority(nombrePropiedad);
+
+- elemento es el elemento del DOM del cual deseas obtener la prioridad de la propiedad CSS.
+- nombrePropiedad es el nombre de la propiedad CSS de la cual deseas obtener la prioridad, como "color", "font-size", etc.
+- prioridad es una cadena que representa la prioridad de la propiedad CSS, que puede ser "important" si la propiedad tiene una regla !important, o una cadena vacía si no.
+
+                <div id="miElemento" style="background-color: blue !important;">Contenido del elemento</div>
+
+                const miElemento = document.getElementById('miElemento');
+                const prioridadColorFondo = miElemento.style.getPropertyPriority('background-color');
+                console.log(prioridadColorFondo); // Esto imprimirá "important"
+
+En este caso, prioridadColorFondo contendrá la cadena "important", ya que la propiedad CSS background-color tiene una regla !important aplicada.
+
+Este método es útil cuando necesitas conocer si una propiedad CSS específica tiene una regla !important aplicada, lo que puede influir en la prioridad y el resultado final de la aplicación de estilos en tu aplicación web.
+
+</font> 
